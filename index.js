@@ -8,7 +8,7 @@ const app = express();
 
 //cria conexão com o banco de dados
 //e a disponibiliza na variável req.db
-app.use(expressMongoDb('mongodb://localhost/usuarios'));
+app.use(expressMongoDb('mongodb://usuarios:usuarios123@165.227.221.155/usuarios'));
 
 //converte os dados presentes no corpo da requisição em JSON
 //e os disponibiliza na variável req.body
@@ -185,4 +185,4 @@ app.delete('/usuario/:id', (req, res) => {
     });
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000, () => console.log('Aplicação Concluida'));
