@@ -107,10 +107,10 @@ app.post('/cadastro', (req, res) => {
     };
 
     // exemplo de validação de email
-    // if(req.body.email.indexOf('@') == -1){
-    //     res.status(400).send({mensagem: 'Email inválido'});
-    //     return;
-    // }
+    if(req.body.email.indexOf('@') == -1){
+        res.status(400).send({mensagem: 'Email inválido'});
+        return;
+    }
 
     req.db.collection('usuario').insert(cadastro, (err) => {
         if(err){
@@ -122,7 +122,7 @@ app.post('/cadastro', (req, res) => {
     });
 });
 
-// atualiza um sabor de churro pelo id
+// atualiza um usuario pelo id
 app.put('/usuario/:id', (req, res) => {
     let query = {
         _id: ObjectID(req.params.id)
@@ -144,6 +144,8 @@ app.put('/usuario/:id', (req, res) => {
         res.send(data);
     });
 });
+
+//atualiza um usuario pelo nome
 
 app.put('/usuario/nome/:nome', (req, res) => {
     
